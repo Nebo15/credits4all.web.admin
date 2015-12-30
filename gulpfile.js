@@ -67,6 +67,7 @@ gulp.task('copy-statics', function() {
         .pipe(gulp.dest('./www'));
 });
 
+
 // Scripts
 gulp.task('copy-scripts', function() {
     return gulp.src(['./src/js/**/*'], {base: './src'})
