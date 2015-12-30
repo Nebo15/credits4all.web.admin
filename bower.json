@@ -1,9 +1,0 @@
-{
-  "name": "credit-admin",
-  "version": "1.0.0",
-  "dependencies": {
-    "bootstrap-sass": "~3.3.6"
-  },
-  "devDependencies": {
-  }
-}
