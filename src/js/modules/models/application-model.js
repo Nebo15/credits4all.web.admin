@@ -42,5 +42,5 @@ angular.module('app.models').factory('ApplicationModel', function (ParseSDK) {
       "Approver"
     ]
   });
-})
+});
 
