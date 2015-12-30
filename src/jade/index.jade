@@ -20,78 +20,17 @@ html(ng-app="app")
             table.table.table-striped
               thead
                 tr
-                  th AppID
-                  th AppDate
-                  th AppState
-                  th ExpiryDate
-                  th ProductID
-                  th Amount
-                  th Term
-                  th FirstName
-                  th LastName
-                  th BirthDate
-                  th NDI
-                  th Passport
-                  th Phone
-                  th Email
-                  th Password
-                  th Sex
-                  th DNISerie
-                  th DNIDateFrom
-                  th DNIDateTill
-                  th DNIIssuePlace
-                  th PassportDateFrom
-                  th PassportDateTill
-                  th ZipCode
-                  th City
-                  th Street
-                  th Building
-                  th Flat
-                  th WorkType
-                  th Organisation
-                  th JobCategory
-                  th Position
-                  th IncomeAmount
-                  th ExpencesAmount
-                  th Decision
-                  th Approve
+                  th(ng-repeat="(key, value) in properties", ng-if="value.visible") {{key}}
+                  th Actions
               tbody
                 tr(ng-repeat="application in objects")
-                  td {{application.get('AppID') }}
-                  td {{application.get('AppDate') | date: 'dd/MM/yyyy'}}
-                  td {{application.get('AppState') }}
-                  td {{application.get('ExpiryDate') | date: 'dd/MM/yyyy'}}
-                  td {{application.get('ProductID') }}
-                  td {{application.get('Amount') }}
-                  td {{application.get('Term') }}
-                  td {{application.get('FirstName') }}
-                  td {{application.get('LastName') }}
-                  td {{application.get('BirthDate') | date: 'dd/MM/yyyy'}}
-                  td {{application.get('NDI') }}
-                  td {{application.get('Passport') }}
-                  td {{application.get('Phone') }}
-                  td {{application.get('Email') }}
-                  td {{application.get('Password') }}
-                  td {{application.get('Sex') }}
-                  td {{application.get('DNISerie') }}
-                  td {{application.get('DNIDateFrom') | date: 'dd/MM/yyyy' }}
-                  td {{application.get('DNIDateTill') | date: 'dd/MM/yyyy' }}
-                  td {{application.get('DNIIssuePlace') }}
-                  td {{application.get('PassportDateFrom') | date: 'dd/MM/yyyy' }}
-                  td {{application.get('PassportDateTill') | date: 'dd/MM/yyyy' }}
-                  td {{application.get('ZipCode') }}
-                  td {{application.get('City') }}
-                  td {{application.get('Street') }}
-                  td {{application.get('Building') }}
-                  td {{application.get('Flat') }}
-                  td {{application.get('WorkType') }}
-                  td {{application.get('Organisation') }}
-                  td {{application.get('JobCategory') }}
-                  td {{application.get('Position') }}
-                  td {{application.get('IncomeAmount') }}
-                  td {{application.get('ExpencesAmount') }}
-                  td {{application.get('Decision') }}
-                  td {{application.get('Approver') }}
+                  td(ng-repeat="(key, value) in properties", ng-if="value.visible", ng-switch="value.type")
+                    //input(type="text", ng-model="application.key")
+                    div(ng-switch-when="date") {{application.get(key) | date: 'dd/MM/yyyy'}}
+                    div(ng-switch-default) {{application.get(key)}}
+                  td
+                    button.btn.btn-success(ng-click="approve(application)") Approve
+                    button.btn.btn-warning(ng-click="reject(application)") Reject
 
     script(src="https://parse.com/downloads/javascript/parse-1.6.12.js")
     script(src='bower_components/angular/angular.js')

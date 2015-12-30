@@ -1,8 +1,62 @@
 'use strict';
 
-angular.module('app').controller('MainController', function ($scope, $timeout, ApplicationCollection, ApplicationModel) {
+angular.module('app').controller('MainController', function ($scope, $timeout, $filter, ApplicationCollection, ApplicationModel) {
 
   $scope.objects = [];
+
+  var Column = function (type, visible) {
+    this.type = type;
+    this.visible = visible;
+  };
+  Column.prototype = {};
+  Column.prototype.filter = function (value) {
+    switch (this.type) {
+      case 'date':
+        return $filter('date')(value, 'dd/MM/yyyy');
+        break;
+      default:
+        return value;
+    }
+  };
+
+  $scope.properties = {
+    "AppID": new Column("number", true),
+    "AppDate": new Column("date", true),
+    "AppState": new Column("text", true),
+    "ExpiryDate": new Column("date", true),
+    "ProductID": new Column("number", true),
+    "Amount": new Column("number", true),
+    "Term": new Column("number", true),
+    "FirstName": new Column("text", true),
+    "LastName": new Column("text", true),
+    "BirthDate": new Column("date", true),
+    "NDI": new Column("number", false),
+    "Passport": new Column("text", false),
+    "Phone": new Column("phone", false),
+    "Email": new Column("email", false),
+    "Password": new Column("text", false),
+    "Sex": new Column("text", false),
+    "DNISerie": new Column("text", false),
+    "DNIDateFrom": new Column("date", false),
+    "DNIDateTill": new Column("date", false),
+    "DNIIssuePlace": new Column("text", false),
+    "PassportDateFrom": new Column("date", false),
+    "PassportDateTill": new Column("date", false),
+    "ZipCode": new Column("number", false),
+    "City": new Column("text", false),
+    "Street": new Column("text", false),
+    "Building": new Column("text", false),
+    "Flat": new Column("text", false),
+    "WorkType": new Column("text", false),
+    "Organisation": new Column("text", false),
+    "JobCategory": new Column("text", false),
+    "Position": new Column("text", false),
+    "IncomeAmount": new Column("number", false),
+    "ExpencesAmount": new Column("number", false),
+    "Decision": new Column("text", false),
+    "Approver": new Column("text", false)
+  };
+
   $scope.update = function () {
     console.log('update');
     return ApplicationCollection.loadApplications().then(function (result) {
@@ -48,8 +102,17 @@ angular.module('app').controller('MainController', function ($scope, $timeout, A
       "Decision": null,
       "Approver": null
     });
-    model.save();
+    model.save().then(function () {
+      return $scope.update();
+    })
   };
+  $scope.approve = function (application) {
+    // approve application
+  };
+  $scope.reject = function (application) {
+    // reject application
+  };
+
   $scope.$on('$destroy', function () {});
   $scope.update();
 });
