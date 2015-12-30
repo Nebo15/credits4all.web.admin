@@ -1,5 +1,6 @@
-(function () {'use strict';
+'use strict';
 
-  window.appName = '<%= appname %>';
-
-})();
+var App = angular.module('app', [
+  'app.models',
+  'app.parse'
+]);
