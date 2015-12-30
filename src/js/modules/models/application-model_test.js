@@ -25,13 +25,6 @@ describe('Application' , function () {
         return obj.destroy();
       }).then(done);
     });
-    it ('should provide access by virtual setter and getters', function (done) {
-      application.Amount = 10;
-      application.save().then(function (obj) {
-        expect(obj.Amount).toEqual(10);
-        return obj.destroy();
-      }).then(done);
-    });
 
   })
 });

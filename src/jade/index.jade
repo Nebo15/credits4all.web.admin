@@ -7,6 +7,9 @@ html(ng-app="app")
     link(rel='stylesheet', href='css/app.css')
   body(ng-controller="MainController")
     nav.navbar.navbar-default.navbar-fixed-top
+      .pull-right
+        a.btn.btn-default(ng-click="update()") Update
+        a.btn.btn-default(ng-click="addNew()") Add new
       .container-fluid
         .navbar-header
           a.navbar-brand(href='#') Credit4All. Credit Requests
@@ -54,41 +57,41 @@ html(ng-app="app")
                   th Approve
               tbody
                 tr(ng-repeat="application in objects")
-                  td {{application.AppID}}
-                  td {{application.AppDate}}
-                  td {{application.AppState}}
-                  td {{application.ExpiryDate}}
-                  td {{application.ProductID}}
-                  td {{application.Amount}}
-                  td {{application.Term}}
-                  td {{application.FirstName}}
-                  td {{application.LastName}}
-                  td {{application.BirthDate}}
-                  td {{application.NDI}}
-                  td {{application.Passport}}
-                  td {{application.Phone}}
-                  td {{application.Email}}
-                  td {{application.Password}}
-                  td {{application.Sex}}
-                  td {{application.DNISerie}}
-                  td {{application.DNIDateFrom}}
-                  td {{application.DNIDateTill}}
-                  td {{application.DNIIssuePlace}}
-                  td {{application.PassportDateFrom}}
-                  td {{application.PassportDateTill}}
-                  td {{application.ZipCode}}
-                  td {{application.City}}
-                  td {{application.Street}}
-                  td {{application.Building}}
-                  td {{application.Flat}}
-                  td {{application.WorkType}}
-                  td {{application.Organisation}}
-                  td {{application.JobCategory}}
-                  td {{application.Position}}
-                  td {{application.IncomeAmount}}
-                  td {{application.ExpencesAmount}}
-                  td {{application.Decision}}
-                  td {{application.Approve}}
+                  td {{application.get('AppID') }}
+                  td {{application.get('AppDate') | date: 'dd/MM/yyyy'}}
+                  td {{application.get('AppState') }}
+                  td {{application.get('ExpiryDate') | date: 'dd/MM/yyyy'}}
+                  td {{application.get('ProductID') }}
+                  td {{application.get('Amount') }}
+                  td {{application.get('Term') }}
+                  td {{application.get('FirstName') }}
+                  td {{application.get('LastName') }}
+                  td {{application.get('BirthDate') | date: 'dd/MM/yyyy'}}
+                  td {{application.get('NDI') }}
+                  td {{application.get('Passport') }}
+                  td {{application.get('Phone') }}
+                  td {{application.get('Email') }}
+                  td {{application.get('Password') }}
+                  td {{application.get('Sex') }}
+                  td {{application.get('DNISerie') }}
+                  td {{application.get('DNIDateFrom') | date: 'dd/MM/yyyy' }}
+                  td {{application.get('DNIDateTill') | date: 'dd/MM/yyyy' }}
+                  td {{application.get('DNIIssuePlace') }}
+                  td {{application.get('PassportDateFrom') | date: 'dd/MM/yyyy' }}
+                  td {{application.get('PassportDateTill') | date: 'dd/MM/yyyy' }}
+                  td {{application.get('ZipCode') }}
+                  td {{application.get('City') }}
+                  td {{application.get('Street') }}
+                  td {{application.get('Building') }}
+                  td {{application.get('Flat') }}
+                  td {{application.get('WorkType') }}
+                  td {{application.get('Organisation') }}
+                  td {{application.get('JobCategory') }}
+                  td {{application.get('Position') }}
+                  td {{application.get('IncomeAmount') }}
+                  td {{application.get('ExpencesAmount') }}
+                  td {{application.get('Decision') }}
+                  td {{application.get('Approver') }}
 
     script(src="https://parse.com/downloads/javascript/parse-1.6.12.js")
     script(src='bower_components/angular/angular.js')

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.models').factory('ApplicationModel', function (ParseSDK) {
-  return ParseSDK.Object.extend({
+  var model = ParseSDK.Object.extend({
     className: "Application",
     // Extend the object with getter and setters  (see parse-angular-patch GitHub repo)
     attrs: [
@@ -42,5 +42,7 @@ angular.module('app.models').factory('ApplicationModel', function (ParseSDK) {
       "Approver"
     ]
   });
+
+  return model;
 });
 
