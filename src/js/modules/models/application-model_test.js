@@ -12,7 +12,6 @@ describe('Application' , function () {
       expect(model).not.toBeUndefined();
     });
     it ('should create instance', function () {
-      console.log(application, new model);
       expect(application).not.toBeUndefined();
     });
     it ('should save, update and delete', function (done) {
