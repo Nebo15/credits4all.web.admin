@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
   <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title><%= appname %></title>
+    <title>Credit4All. Request approving</title>
     <link rel="stylesheet" href="css/app.css">
   </head>
-  <body>
+  <body ng-controller="MainController">
     <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="pull-right"><a ng-click="update()" class="btn btn-default">Update</a><a ng-click="addNew()" class="btn btn-default">Add new</a></div>
       <div class="container-fluid">
         <div class="navbar-header"><a href="#" class="navbar-brand">Credit4All. Credit Requests</a></div>
       </div>
@@ -19,125 +20,15 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th ng-repeat="(key, value) in properties" ng-if="value.visible">{{key}}</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
+                <tr ng-repeat="application in objects">
+                  <td ng-repeat="(key, value) in properties" ng-if="value.visible" ng-switch="value.type">
+                    <div ng-switch-when="date">{{application.get(key) | date: 'dd/MM/yyyy'}}</div>
+                    <div ng-switch-default>{{application.get(key)}}</div>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -145,6 +36,16 @@
         </div>
       </div>
     </div>
+    <script src="https://parse.com/downloads/javascript/parse-1.6.12.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/parse-angular-patch/src/parse-angular.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/configs/parse.js"></script>
+    <script src="js/constants/env.js"></script>
+    <script src="js/controllers/main-controller.js"></script>
+    <script src="js/modules/models/models.module.js"></script>
+    <script src="js/modules/models/application-collection.js"></script>
+    <script src="js/modules/models/application-model.js"></script>
+    <script src="js/modules/parse/parse.module.js"></script>
   </body>
 </html>
