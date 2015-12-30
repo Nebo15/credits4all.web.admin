@@ -25,7 +25,6 @@ html(ng-app="app")
               tbody
                 tr(ng-repeat="application in objects")
                   td(ng-repeat="(key, value) in properties", ng-if="value.visible", ng-switch="value.type")
-                    //input(type="text", ng-model="application.key")
                     div(ng-switch-when="date") {{application.get(key) | date: 'dd/MM/yyyy'}}
                     div(ng-switch-default) {{application.get(key)}}
                   td

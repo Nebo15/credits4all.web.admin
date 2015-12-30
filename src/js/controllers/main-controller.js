@@ -58,7 +58,6 @@ angular.module('app').controller('MainController', function ($scope, $timeout, $
   };
 
   $scope.update = function () {
-    console.log('update');
     return ApplicationCollection.loadApplications().then(function (result) {
       $scope.objects = result;
       $scope.$apply();

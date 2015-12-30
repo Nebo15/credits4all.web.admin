@@ -17,5 +17,18 @@ describe('ParseSDK', function () {
       return obj.destroy();
     }).then(done)
   });
+  it ('should support virtual setter/getters', function (done) {
+    var TestObject = sdk.Object.extend({
+      className: "TestObject",
+      attrs: ['name']
+    });
+    var testObject = new TestObject();
+    testObject.name = 'test';
+    testObject.save().then(function (obj) {
+      expect(obj.get('name')).toEqual('test');
+      done();
+    })
+
+  })
 });
 

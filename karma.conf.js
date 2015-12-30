@@ -7,6 +7,7 @@ module.exports = function(config){
       "https://parse.com/downloads/javascript/parse-1.6.12.js",
       "src/bower_components/angular/angular.js",
       "src/bower_components/angular-mocks/angular-mocks.js",
+      "src/bower_components/parse-angular-patch/src/parse-angular.js",
       "src/js/**/*.module.js",
       "src/js/**/*.js"
     ],
