@@ -1,6 +1,12 @@
 {
-  "name": "",
-  "version": "0.0.0",
+  "name": "credit4all-admin",
+  "version": "1.0.0",
+  "description": "Admin Website for Credit4All",
+  "repository": "https://github.com/Nebo15/credits4all.web.admin",
+  "license": "Apache License 2.0",
+  "script": {
+    "postinstall": "bower install"
+  },
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.9.6",
