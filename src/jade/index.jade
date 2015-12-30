@@ -25,8 +25,10 @@ html(ng-app="app")
               tbody
                 tr(ng-repeat="application in objects")
                   td(ng-repeat="(key, value) in properties", ng-if="value.visible", ng-switch="value.type")
-                    div(ng-switch-when="date") {{application.get(key) | date: 'dd/MM/yyyy'}}
-                    div(ng-switch-default) {{application.get(key)}}
+                    //input.form-control(ng-switch-when="date", type="date", ng-model="application[key]")
+                    //input.form-control(ng-switch-default, type="text", ng-model="application[key]")
+                    div(ng-switch-when="date") {{application[key] | date: 'dd/MM/yyyy'}}
+                    div(ng-switch-default) {{application[key]}}
                   td
                     button.btn.btn-success(ng-click="approve(application)") Approve
                     button.btn.btn-warning(ng-click="reject(application)") Reject
