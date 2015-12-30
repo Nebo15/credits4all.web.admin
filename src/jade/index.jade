@@ -1,11 +1,11 @@
 doctype html
-html
+html(ng-app="app")
   head(lang='en')
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
     title Credit4All. Request approving
     link(rel='stylesheet', href='css/app.css')
-  body
+  body(ng-controller="MainController")
     nav.navbar.navbar-default.navbar-fixed-top
       .container-fluid
         .navbar-header
@@ -17,107 +17,90 @@ html
             table.table.table-striped
               thead
                 tr
-                  th #
-                  th Header
-                  th Header
-                  th Header
-                  th Header
+                  th AppID
+                  th AppDate
+                  th AppState
+                  th ExpiryDate
+                  th ProductID
+                  th Amount
+                  th Term
+                  th FirstName
+                  th LastName
+                  th BirthDate
+                  th NDI
+                  th Passport
+                  th Phone
+                  th Email
+                  th Password
+                  th Sex
+                  th DNISerie
+                  th DNIDateFrom
+                  th DNIDateTill
+                  th DNIIssuePlace
+                  th PassportDateFrom
+                  th PassportDateTill
+                  th ZipCode
+                  th City
+                  th Street
+                  th Building
+                  th Flat
+                  th WorkType
+                  th Organisation
+                  th JobCategory
+                  th Position
+                  th IncomeAmount
+                  th ExpencesAmount
+                  th Decision
+                  th Approve
               tbody
-                tr
-                  td 1,001
-                  td Lorem
-                  td ipsum
-                  td dolor
-                  td sit
-                tr
-                  td 1,002
-                  td amet
-                  td consectetur
-                  td adipiscing
-                  td elit
-                tr
-                  td 1,003
-                  td Integer
-                  td nec
-                  td odio
-                  td Praesent
-                tr
-                  td 1,003
-                  td libero
-                  td Sed
-                  td cursus
-                  td ante
-                tr
-                  td 1,004
-                  td dapibus
-                  td diam
-                  td Sed
-                  td nisi
-                tr
-                  td 1,005
-                  td Nulla
-                  td quis
-                  td sem
-                  td at
-                tr
-                  td 1,006
-                  td nibh
-                  td elementum
-                  td imperdiet
-                  td Duis
-                tr
-                  td 1,007
-                  td sagittis
-                  td ipsum
-                  td Praesent
-                  td mauris
-                tr
-                  td 1,008
-                  td Fusce
-                  td nec
-                  td tellus
-                  td sed
-                tr
-                  td 1,009
-                  td augue
-                  td semper
-                  td porta
-                  td Mauris
-                tr
-                  td 1,010
-                  td massa
-                  td Vestibulum
-                  td lacinia
-                  td arcu
-                tr
-                  td 1,011
-                  td eget
-                  td nulla
-                  td Class
-                  td aptent
-                tr
-                  td 1,012
-                  td taciti
-                  td sociosqu
-                  td ad
-                  td litora
-                tr
-                  td 1,013
-                  td torquent
-                  td per
-                  td conubia
-                  td nostra
-                tr
-                  td 1,014
-                  td per
-                  td inceptos
-                  td himenaeos
-                  td Curabitur
-                tr
-                  td 1,015
-                  td sodales
-                  td ligula
-                  td in
-                  td libero
+                tr(ng-repeat="application in objects")
+                  td {{application.AppID}}
+                  td {{application.AppDate}}
+                  td {{application.AppState}}
+                  td {{application.ExpiryDate}}
+                  td {{application.ProductID}}
+                  td {{application.Amount}}
+                  td {{application.Term}}
+                  td {{application.FirstName}}
+                  td {{application.LastName}}
+                  td {{application.BirthDate}}
+                  td {{application.NDI}}
+                  td {{application.Passport}}
+                  td {{application.Phone}}
+                  td {{application.Email}}
+                  td {{application.Password}}
+                  td {{application.Sex}}
+                  td {{application.DNISerie}}
+                  td {{application.DNIDateFrom}}
+                  td {{application.DNIDateTill}}
+                  td {{application.DNIIssuePlace}}
+                  td {{application.PassportDateFrom}}
+                  td {{application.PassportDateTill}}
+                  td {{application.ZipCode}}
+                  td {{application.City}}
+                  td {{application.Street}}
+                  td {{application.Building}}
+                  td {{application.Flat}}
+                  td {{application.WorkType}}
+                  td {{application.Organisation}}
+                  td {{application.JobCategory}}
+                  td {{application.Position}}
+                  td {{application.IncomeAmount}}
+                  td {{application.ExpencesAmount}}
+                  td {{application.Decision}}
+                  td {{application.Approve}}
 
+    script(src="https://parse.com/downloads/javascript/parse-1.6.12.js")
+    script(src='bower_components/angular/angular.js')
+    script(src='bower_components/parse-angular-patch/src/parse-angular.js')
     script(src='js/app.js')
+    script(src='js/configs/parse.js')
+    script(src='js/constants/env.js')
+
+    script(src='js/controllers/main-controller.js')
+
+    script(src='js/modules/models/models.module.js')
+    script(src='js/modules/models/application-collection.js')
+    script(src='js/modules/models/application-model.js')
+
+    script(src='js/modules/parse/parse.module.js')
