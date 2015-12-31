@@ -20,7 +20,7 @@ html(ng-app="app")
             table.table.table-striped
               thead
                 tr
-                  th(ng-repeat="(key, value) in properties", ng-if="value.visible") {{key}}
+                  th(ng-repeat="(key, value) in properties", ng-if="value.visible") {{value.name}}
                   th Actions
               tbody
                 tr(ng-repeat="application in objects")
@@ -32,6 +32,7 @@ html(ng-app="app")
                   td
                     button.btn.btn-success(ng-click="approve(application)") Approve
                     button.btn.btn-warning(ng-click="reject(application)") Reject
+                    button.btn.btn-default(ng-click="edit(application)") Edit
 
     script(src="https://parse.com/downloads/javascript/parse-1.6.12.js")
     script(src='bower_components/angular/angular.js')

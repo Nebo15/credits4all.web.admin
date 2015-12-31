@@ -4,7 +4,8 @@ angular.module('app').controller('MainController', function ($scope, $timeout, $
 
   $scope.objects = [];
 
-  var Column = function (type, visible) {
+  var Column = function (name, type, visible) {
+    this.name = name;
     this.type = type;
     this.visible = visible;
   };
@@ -20,41 +21,41 @@ angular.module('app').controller('MainController', function ($scope, $timeout, $
   };
 
   $scope.properties = {
-    "AppID": new Column("number", true),
-    "AppDate": new Column("date", true),
-    "AppState": new Column("text", true),
-    "ExpiryDate": new Column("date", true),
-    "ProductID": new Column("number", true),
-    "Amount": new Column("number", true),
-    "Term": new Column("number", true),
-    "FirstName": new Column("text", true),
-    "LastName": new Column("text", true),
-    "BirthDate": new Column("date", true),
-    "NDI": new Column("number", false),
-    "Passport": new Column("text", false),
-    "Phone": new Column("phone", false),
-    "Email": new Column("email", false),
-    "Password": new Column("text", false),
-    "Sex": new Column("text", false),
-    "DNISerie": new Column("text", false),
-    "DNIDateFrom": new Column("date", false),
-    "DNIDateTill": new Column("date", false),
-    "DNIIssuePlace": new Column("text", false),
-    "PassportDateFrom": new Column("date", false),
-    "PassportDateTill": new Column("date", false),
-    "ZipCode": new Column("number", false),
-    "City": new Column("text", false),
-    "Street": new Column("text", false),
-    "Building": new Column("text", false),
-    "Flat": new Column("text", false),
-    "WorkType": new Column("text", false),
-    "Organisation": new Column("text", false),
-    "JobCategory": new Column("text", false),
-    "Position": new Column("text", false),
-    "IncomeAmount": new Column("number", false),
-    "ExpencesAmount": new Column("number", false),
-    "Decision": new Column("text", false),
-    "Approver": new Column("text", false)
+    "AppID": new Column("AppID", "number", true),
+    "AppDate": new Column("AppDate", "date", true),
+    "AppState": new Column("AppState", "text", true),
+    "ExpiryDate": new Column("ExpiryDate", "date", true),
+    "ProductID": new Column("ProductID", "number", true),
+    "Amount": new Column("Amount", "number", true),
+    "Term": new Column("Term", "number", true),
+    "FirstName": new Column("FirstName", "text", true),
+    "LastName": new Column("LastName", "text", true),
+    "BirthDate": new Column("BirthDate", "date", true),
+    "NDI": new Column("NDI", "number", false),
+    "Passport": new Column("Passport", "text", false),
+    "Phone": new Column("Phone", "phone", false),
+    "Email": new Column("Email", "email", false),
+    "Password": new Column("Password", "text", false),
+    "Sex": new Column("Sex", "text", false),
+    "DNISerie": new Column("DNISerie", "text", false),
+    "DNIDateFrom": new Column("DNIDateFrom", "date", false),
+    "DNIDateTill": new Column("DNIDateTill", "date", false),
+    "DNIIssuePlace": new Column("DNIIssuePlace", "text", false),
+    "PassportDateFrom": new Column("PassportDateFrom", "date", false),
+    "PassportDateTill": new Column("PassportDateTill", "date", false),
+    "ZipCode": new Column("ZipCode", "number", false),
+    "City": new Column("City", "text", false),
+    "Street": new Column("Street", "text", false),
+    "Building": new Column("Building", "text", false),
+    "Flat": new Column("Flat", "text", false),
+    "WorkType": new Column("WorkType", "text", false),
+    "Organisation": new Column("Organisation", "text", false),
+    "JobCategory": new Column("JobCategory", "text", false),
+    "Position": new Column("Position", "text", false),
+    "IncomeAmount": new Column("IncomeAmount", "number", false),
+    "ExpencesAmount": new Column("ExpencesAmount", "number", false),
+    "Decision": new Column("Decision", "text", false),
+    "Approver": new Column("Approver", "text", false)
   };
 
   $scope.update = function () {
@@ -110,6 +111,9 @@ angular.module('app').controller('MainController', function ($scope, $timeout, $
   };
   $scope.reject = function (application) {
     // reject application
+  };
+  $scope.edit = function (application) {
+    // edit application
   };
 
   $scope.$on('$destroy', function () {});
